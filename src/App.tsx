@@ -1,3 +1,4 @@
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "./layout/Layout";
 import EventCreatePage from "./pages/EventCreatePage";
 import EventDetailsPage from "./pages/EventDetailsPage";
@@ -31,6 +32,8 @@ const routes = [
   },
 ];
 
+const router = createBrowserRouter(routes);
+
 export default function App() {
-  return "Home page";
+  return <RouterProvider router={router} />;
 }
