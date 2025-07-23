@@ -1,10 +1,17 @@
 import { Plus } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useEventContext } from "../context/EventContext";
+import { Attendee } from "../types";
+
+type EventFormData = Omit<Event, "id" | "attendees"> & {
+  attendeeEmail: string;
+};
 
 export default function EventCreatePage() {
+  const { state, addEvent } = useEventContext();
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<EventFormData>({
     title: "",
     description: "",
     date: "",
@@ -12,6 +19,8 @@ export default function EventCreatePage() {
     location: "",
     attendeeEmail: "",
   });
+
+  const [attendees, setAttendees] = useState<Attendee[]>([]);
 
   // Function to handle input changes
   function handleInputChange(
@@ -30,7 +39,7 @@ export default function EventCreatePage() {
       date: formData.date,
       time: formData.time,
       location: formData.location,
-      // attendees: [formData.attendeeEmail],
+      attendees: attendees,
     };
 
     addEvent(eventData);

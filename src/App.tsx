@@ -1,4 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { EventProvider } from "./context/EventContext";
 import Layout from "./layout/Layout";
 import EventCreatePage from "./pages/EventCreatePage";
 import EventDetailsPage from "./pages/EventDetailsPage";
@@ -35,5 +36,9 @@ const routes = [
 const router = createBrowserRouter(routes);
 
 export default function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <EventProvider>
+      <RouterProvider router={router} />;
+    </EventProvider>
+  );
 }

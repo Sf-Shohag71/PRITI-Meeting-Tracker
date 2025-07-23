@@ -1,5 +1,7 @@
-import { createContext, useReducer } from "react";
+import { createContext, useContext, useReducer } from "react";
+import { eventReducer } from "../reducers/eventReducer";
 import { Event, type EventContextType } from "../types";
+import { getInitialState } from "../utils/localStorage";
 
 const EventContext = createContext<EventContextType | undefined>(undefined);
 

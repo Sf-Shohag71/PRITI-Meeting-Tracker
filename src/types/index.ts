@@ -14,7 +14,7 @@ export interface Attendee {
 }
 
 export interface EventState {
-  event: Event[];
+  events: Event[];
 }
 
 export type EventAction = { type: "ADD_EVENT"; payload: Event };
